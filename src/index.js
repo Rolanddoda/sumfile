@@ -1,8 +1,8 @@
-import * as h from './helpers'
+import { getFile } from './utils/get-file'
 
 export async function cli(argv) {
   const args = argv.slice(2)
-  const file = await h.getFile(args)
+  const file = await getFile(args)
 
-  console.log('hmm that works')
+  console.log(file)
 }

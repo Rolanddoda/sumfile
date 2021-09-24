@@ -1,13 +1,10 @@
+import * as h from './helpers'
+// Libraries
 import { readFile } from 'fs/promises'
-
-function stop(message) {
-  console.log(message)
-  process.exit(1)
-}
 
 function correctArgsPassed(args) {
   if (!args.length)
-    stop(
+    h.stop(
       "You didn't specified any argument. Please specify a path to a file to read and sum numbers"
     )
 
@@ -19,12 +16,12 @@ function correctArgsPassed(args) {
   const firstArg = args[0]
 
   if (firstArg === 'help') {
-    stop(
+    h.stop(
       `This is a simple tool. You just have to type in your terminal the path of the text file and the tool will sum the numbers and print the result.\nExample: sumfile SALARIES.txt`
     )
   }
 
-  if (!firstArg.endsWith('.txt')) stop('Please specify a path to a file which ends with .txt')
+  if (!firstArg.endsWith('.txt')) h.stop('Please specify a path to a file which ends with .txt')
 
   return true
 }
@@ -37,7 +34,7 @@ export async function getFile(args) {
   try {
     file = await readFile(args[0], 'utf8')
   } catch (e) {
-    stop('File not found')
+    h.stop('File not found')
   }
 
   return file
