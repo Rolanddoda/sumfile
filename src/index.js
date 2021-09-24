@@ -23,5 +23,7 @@ export async function cli(argv) {
   const args = argv.slice(2)
   const sums = await getSumsOfFiles(args[0], {})
 
-  console.log(sums)
+  for (const [fileName, sum] of Object.entries(sums)) {
+    console.log(`${fileName} - ${sum}`)
+  }
 }
