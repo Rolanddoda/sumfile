@@ -34,7 +34,7 @@ export async function getFile(args) {
   try {
     file = await readFile(args[0], 'utf8')
   } catch (e) {
-    h.stop('File not found')
+    h.stop(`Could not find file ${args[0]}`)
   }
 
   return file
