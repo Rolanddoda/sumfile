@@ -9,7 +9,7 @@ A simple tool to output the sum of numbers located in a file line by line
 ### Installation
 
 ```shell
-npm install -g sumfile
+npm install -g @roland1993/sum-file
 ```
 
 ### Usage with example
