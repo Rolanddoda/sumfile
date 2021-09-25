@@ -4,16 +4,16 @@ import { validateArgs } from './utils/validate-args'
 import path from 'path'
 
 async function getSumsOfFiles(filename, sumsObj, cmdDirectory) {
-  const directory = cmdDirectory ? cmdDirectory + '/' : ''
-  const file = await getFile(directory + filename)
+  const file = await getFile(cmdDirectory + '/' + filename)
   const linesOfFile = file.split(/\r?\n/)
   let sum = 0
 
   for (const line of linesOfFile) {
     if (h.isNumber(line)) sum += +line
     else {
-      const fileSumObj = await getSumsOfFiles(line, sumsObj, cmdDirectory)
-      sum += +fileSumObj[line]
+      const filePath = line.trim()
+      const fileSumObj = await getSumsOfFiles(filePath, sumsObj, cmdDirectory)
+      sum += +fileSumObj[filePath]
     }
   }
 
