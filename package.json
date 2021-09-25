@@ -1,5 +1,5 @@
 {
-  "name": "@roland-doda/sum-file",
+  "name": "@roland1993/sum-file",
   "version": "0.0.1",
   "engines": {
     "node": ">=12.0.0"
@@ -19,7 +19,7 @@
   },
   "scripts": {
     "lint": "eslint --fix --ext .js src/**",
-    "release": "np --no-tests"
+    "release": "np --no-tests --no-yarn"
   },
   "keywords": [
     "cli",
