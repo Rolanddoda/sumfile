@@ -1,30 +1,7 @@
-import * as h from './utils/helpers'
-import { getFile } from './utils/get-file'
 import { validateArgs } from './utils/validate-args'
-import { checkForCircularDependencies } from './utils/check-for-circular-dependencies'
+import { getSumsOfFiles } from './utils/get-sum-of-files'
+// Libraries
 import path from 'path'
-
-async function getSumsOfFiles(filename, cmdDirectory, sumsObj = {}, fileAccess = 0) {
-  const file = await getFile(cmdDirectory + '/' + filename)
-  const linesOfFile = file.split(/\r?\n/)
-  let sum = 0
-
-  for (const line of linesOfFile) {
-    if (h.isNumber(line)) sum += +line
-    else {
-      checkForCircularDependencies(filename, line.trim())
-
-      const filePath = line.trim()
-      const fileSumObj = await getSumsOfFiles(filePath, cmdDirectory, sumsObj, fileAccess + 1)
-
-      sum += +fileSumObj[filePath].sum
-    }
-  }
-
-  sumsObj[filename] = { sum, fileAccess: fileAccess }
-
-  return sumsObj
-}
 
 export async function cli(argv) {
   const args = argv.slice(2)

@@ -10,7 +10,7 @@ export function checkForCircularDependencies(currentFileName, targetFileName) {
     const index = filesMapStack.findIndex((f) => f === currentFileName)
     if (filesMapStack[index + 1] === targetFileName) {
       stop(
-        `You ran into a circular dependency problem. ${currentFileName} gets imported from a ${
+        `You ran into a circular dependency problem. ${currentFileName} gets imported from ${
           filesMapStack[filesMapStack.length - 1]
         } but ${currentFileName} already imports ${filesMapStack[filesMapStack.length - 1]}`
       )
