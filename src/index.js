@@ -16,3 +16,5 @@ export async function cli(argv) {
     console.log(`${fileName} - ${sum}`)
   }
 }
+
+cli(process.argv)
