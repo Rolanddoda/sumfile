@@ -47,3 +47,16 @@ A.txt - 111
 B.txt - 39
 C.txt - 12
 ```
+
+### Downloading and running it with node
+
+1. Download the source code
+2. Open the terminal in the project's root
+3. Run `npm install`
+4. Run `node -r esm src path/to/a/file`
+
+For example: 
+
+```shell
+node -r esm src C:/Users/username/Desktop/TEST/a.txt
+```
