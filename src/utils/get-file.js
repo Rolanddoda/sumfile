@@ -1,6 +1,7 @@
 import * as h from './helpers'
 // Libraries
-import { readFile } from 'fs/promises'
+import { promises } from 'fs'
+const { readFile } = promises
 
 export async function getFile(path) {
   let file
